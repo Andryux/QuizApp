@@ -1,0 +1,39 @@
+package com.andryux.quizapp.data
+
+import android.content.Context
+import androidx.room.Database
+import androidx.room.Room
+import androidx.room.RoomDatabase
+
+/**
+ * Database class with a singleton INSTANCE object
+ */
+@Database(entities = [Country::class], version = 1, exportSchema = false)
+abstract class CountryRoomDatabase : RoomDatabase() {
+
+    abstract fun countryDao(): CountryDao
+
+    companion object{
+        @Volatile
+        private var INSTANCE: CountryRoomDatabase? = null
+
+        fun getDatabase(context: Context): CountryRoomDatabase{
+            //if the INSTANCE is not null, then return it,
+            //if it is, then create the database
+            return INSTANCE ?: synchronized(this){
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    CountryRoomDatabase::class.java,
+                    "countries_database"
+                )
+                    //Wipes and rebuilds instead of migrating if no migration object.
+                    //Migration is not part of this codelab.
+                    .fallbackToDestructiveMigration()
+                    .build()
+                INSTANCE = instance
+                //return instance
+                instance
+            }
+        }
+    }
+}

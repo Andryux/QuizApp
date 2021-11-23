@@ -1,7 +1,14 @@
 <resources>
+    <!-- Strings Intro Screen -->
     <string name="app_name">QuizApp</string>
     <string name="welcome">Welcome</string>
     <string name="enter_name">Please, enter your name</string>
     <string name="name">Name</string>
     <string name="start">Start</string>
+    <!-- Strings Flags Screen -->
+
+    <!-- Strings Congratulations Screen -->
+    <string name="congratulations">Congratulations Eddy!</string>
+    <string name="your_score_is">Your score is: </string>
+    <string name="play_again">Play Again</string>
 </resources>

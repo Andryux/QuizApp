@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/introFragment">
+
+    <fragment
+        android:id="@+id/introFragment"
+        android:name="com.andryux.quizapp.iu.IntroFragment"
+        android:label="IntroFragment"
+        tools:layout="@layout/fragment_intro">
+        <action
+            android:id="@+id/action_introFragment_to_flagsFragment"
+            app:destination="@id/flagsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/flagsFragment"
+        android:name="com.andryux.quizapp.iu.flagsscreen.FlagsFragment"
+        android:label="FlagsFragment"
+        tools:layout="@layout/fragment_flags">
+        <action
+            android:id="@+id/action_flagsFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+        <action
+            android:id="@+id/action_flagsFragment_to_introFragment"
+            app:destination="@id/introFragment" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.andryux.quizapp.iu.scorescreen.ScoreFragment"
+        android:label="ScoreFragment"
+        tools:layout="@layout/fragment_score">
+        <action
+            android:id="@+id/action_scoreFragment_to_introFragment"
+            app:destination="@id/introFragment" />
+    </fragment>
+</navigation>
